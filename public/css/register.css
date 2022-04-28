@@ -1,0 +1,9 @@
+.register_section{
+    min-height: 100vh;
+    padding: 10vh 0px;
+    background: #fefdff;
+}
+
+.form_hero{
+    padding-bottom: 20px;
+}

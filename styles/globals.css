@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+ /* gold like #f77f00 white-like: #eae2b7*/
 html,
 body {
   padding: 0;
@@ -13,4 +15,63 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+}
+button:disabled {
+  background: #ccc !important;
+}
+
+/* overrule bootstrap */
+.btn-primary{
+  background: #03045e !important;
+}
+.bg-default{
+  background-color: #eae2b7 !important;
+}
+
+.btn-primary:hover{
+  background: #eaeaf0 !important;
+  color: #03045e !important;
+}
+
+/* navbar area styling */
+.bg-dark{
+  background-color: #03045e !important;
+}
+
+/* register page styling */
+.form_hero{
+  min-height: 20vh;
+  padding: 20px 0px;
+  line-height: 1.5rem;
+}
+.form_hero h2{
+  font-weight: 900;
+  color: #03045e;
+}
+.form_hero h6{
+  line-height: 1.6rem;
+}
+
+.form_area{
+  min-height: 70vh;
+  padding: 5vh 0px;
+}
+
+.form_area label{
+  color: #03045e;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* mobile  */
+@media (max-width: 600px) {
+  .form_area{
+    min-height: 70vh;
+    padding: 2vh 0px;
+  }
 }
