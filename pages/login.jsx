@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import LoginForm from '../components/loginForm'
 import styles from '../styles/Home.module.css'
 import { toast } from 'react-toastify';
 import axios from 'axios'
+import { UserContext } from '../context'
+import { useRouter } from 'next/router'
 
 export default function Login() {
+  const router= useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formState, setFormState] = useState({
@@ -17,6 +20,10 @@ export default function Login() {
   });
   const updateEmail = (v) => {setEmail(v)}
   const updatePassword = (v) => {setPassword(v)}
+
+  //context 
+  const [state, setState] = useContext(UserContext);
+
 
   const toastError = (msg) => {
     return toast.error(msg, {
@@ -79,10 +86,18 @@ export default function Login() {
         //empty the form fields
         setEmail("")
         setPassword("")
-        console.log(postLogin.data.data)
-        return toastSuccess("Logged In successfully")
+        let userDetails = postLogin.data.data.correctUser
+        let userToken = postLogin.data.data.accessToken
+        //update context
+        setState({
+          user: userDetails,
+          token: userToken
+        })
+        //update localstorage
+        window.localStorage.setItem('auth', JSON.stringify(postLogin.data.data))
+        return router.push("/dashboard")
       }
-      // console.log(postLogin.data)
+    
 
       
     } catch (error) {
@@ -92,17 +107,15 @@ export default function Login() {
         success: false,
         message: ""
       })
-
+      setPassword("")
       return toastError(error.response.data.data.message)
 
     }
 
-    
-
-
 
   }
 
+  if(state && state.token !== ""){router.push("/dashboard")};
 
 
   return (

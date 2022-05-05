@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import RegisterForm from '../components/registerForm'
 import styles from '../styles/Home.module.css'
 import { toast } from 'react-toastify';
 import axios from 'axios'
+import { UserContext } from '../context'
+import { useRouter } from "next/router";
 
 export default function Login() {
+  const router = useRouter()
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -131,6 +134,8 @@ export default function Login() {
 
   }
 
+  const [state, setState] = useContext(UserContext);
+  if(state && state.token !== ""){router.push("/dashboard")};
 
 
   return (
