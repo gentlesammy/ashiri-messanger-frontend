@@ -42,7 +42,7 @@ button:disabled {
 }
 
 /* navbar area styling */
-.bg-dark{
+.bg-darko{
   background-color: #03045e !important;
 }
 
@@ -90,11 +90,19 @@ footer{
   ###########################################################################
 */
 
+.menu_icon_mobile{
+  display: none;
+}
+.menu_icon_mobile svg{
+  width: 50px;
+}
+
 .dashboard_area{
   min-height: 80vh;
   display:flex;
   padding: 5vh 20px;
 }
+
 
 .dashboard_area .dashboard_navbar{
   flex: 2;
@@ -171,6 +179,7 @@ footer{
   background: #fff;
   margin-right: 10px;
   padding-top: 20px;
+  
 }
 
 .dashboard_area .dashboard_navbar h3{
@@ -189,6 +198,13 @@ footer{
   width: 30px !important;
   color: #fff !important;
   margin-right: 2px;
+}
+
+.dashboard_area .hide_dashboard_navbar{
+  display: none !important;
+} 
+ .menu_icon_mobile{
+  display: block;
 }
 
 }

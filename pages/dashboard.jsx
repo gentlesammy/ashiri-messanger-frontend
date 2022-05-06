@@ -7,14 +7,16 @@ import { toast } from 'react-toastify';
 import axios from 'axios'
 import { UserContext } from '../context'
 import { useRouter } from "next/router";
-import { InboxOutlined, LogoutOutlined, NotificationOutlined, ProfileOutlined } from '@ant-design/icons'
+import { CarryOutOutlined, InboxOutlined, LogoutOutlined, MenuOutlined, NotificationOutlined, ProfileOutlined } from '@ant-design/icons'
 import Profile from '../components/profile'
 import Inbox from '../components/inbox'
 import Notification from '../components/notification'
+import { Switch } from 'antd'
 
 export default function Dashboard() {
   const router = useRouter()
   const [state, setState] = useContext(UserContext);
+  const [showNav, setShowNav] = useState(false);
   const [curretPage, setCurretPage] = useState("profile")
   // useEffect(() => {
   //   if(state && state.token == ""){router.push("/")};
@@ -24,6 +26,11 @@ export default function Dashboard() {
     return setCurretPage(pageName)
   }
 
+  const toggleMobileDashboardNav = ()=>{
+    setShowNav((current) =>{
+      return !current
+    })
+  }
 
   
   
@@ -40,10 +47,12 @@ export default function Dashboard() {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
         <link rel="manifest" href="/favicons/site.webmanifest"></link>
       </Head>
-
+      <div className="menu_icon_mobile pt-3 text-center">
+            <Switch checked={showNav} onClick={toggleMobileDashboardNav}/>
+        </div>
       <div className='dashboard_area'>
           {/* dashboard navbar section */}
-          <div className="dashboard_navbar">
+          <div className={`dashboard_navbar ${!showNav  && "hide_dashboard_navbar"}`}>
             <h3 className='text-center py-2'>Dashboard</h3>
             <div className="links">
 

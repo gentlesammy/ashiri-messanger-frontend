@@ -24,7 +24,7 @@ const Header = () => {
     }
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-darko">
                 <div className="container d-flex">
                     
                     <Link href="/">
