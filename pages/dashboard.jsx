@@ -16,9 +16,9 @@ export default function Dashboard() {
   const router = useRouter()
   const [state, setState] = useContext(UserContext);
   const [curretPage, setCurretPage] = useState("profile")
-  useEffect(() => {
-    if(state && state.token == ""){router.push("/")};
-  }, [state])
+  // useEffect(() => {
+  //   if(state && state.token == ""){router.push("/")};
+  // }, [state])
 
   const switchPage = (pageName) => {
     return setCurretPage(pageName)
